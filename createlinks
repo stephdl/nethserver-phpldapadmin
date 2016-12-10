@@ -1,0 +1,21 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+for my $event_conf (qw (nethserver-phpldapadmin-update))
+{
+    event_actions($event_conf, 
+             'initialize-default-databases' => '00',
+}
+
+for my $event (qw(
+    nethserver-phpldapadmin-update 
+    nethserver-phpldapadmin-save 
+
+    ))
+{
+    templates2events("/etc/phpldapadmin/config.inc.php", $event);
+    templates2events("/etc/httpd/conf.d/phpldapadmin.conf", $event);
+    templates2events("/etc/httpd/conf.d/default-virtualhost.inc", $event);
+    event_services($event, qw(httpd reload));
+}

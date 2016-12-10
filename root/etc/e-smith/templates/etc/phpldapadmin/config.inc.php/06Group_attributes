@@ -1,0 +1,18 @@
+/*********************************************
+ * Group attributes                          *
+ *********************************************/
+
+/* Add "modify group members" link to the attribute. */
+// $config->custom->modify_member['groupattr'] = array('member','uniqueMember','memberUid');
+
+/* Configure filter for member search. This only applies to "modify group members" feature */
+// $config->custom->modify_member['filter'] = '(objectclass=Person)';
+
+/* Attribute that is added to the group member attribute. */
+// $config->custom->modify_member['attr'] = 'dn';
+
+/* For Posix attributes */
+// $config->custom->modify_member['posixattr'] = 'uid';
+// $config->custom->modify_member['posixfilter'] = '(uid=*)';
+// $config->custom->modify_member['posixgroupattr'] = 'memberUid';
+

@@ -1,0 +1,19 @@
+/*********************************************
+ * Unique attributes                         *
+ *********************************************/
+
+/* You may want phpLDAPadmin to enforce some attributes to have unique values
+   (ie: not belong to other entries in your tree. This (together with
+   'unique','dn' and 'unique','pass' option will not let updates to
+   occur with other attributes have the same value. */
+#  $servers->setValue('unique','attrs',array('mail','uid','uidNumber'));
+
+/* If you set this, then phpldapadmin will bind to LDAP with this user ID when
+   searching for attribute uniqueness. The idea is, this user id would have full
+   (readonly) access to your ldap directory (the logged in user may not), so
+   that you can be guaranteed to get a unique uidnumber for your directory. */
+// $servers->setValue('unique','dn',null);
+
+/* The password for the dn above. */
+// $servers->setValue('unique','pass',null);
+

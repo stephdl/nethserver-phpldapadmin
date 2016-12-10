@@ -1,0 +1,7 @@
+#
+# 50phpldapadmin
+#
+RewriteEngine On
+RewriteCond %\{HTTPS\} !=on
+RewriteRule ^/phpldapadmin(/.*)?$ https://%\{HTTP_HOST\}/phpldapadmin$1 [L,R=301]
+RewriteRule ^/ldapadmin(/.*)?$ https://%\{HTTP_HOST\}/phpldapadmin$1 [L,R=301]

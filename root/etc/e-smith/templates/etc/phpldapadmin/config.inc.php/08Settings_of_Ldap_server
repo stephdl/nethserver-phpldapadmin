@@ -1,0 +1,112 @@
+/*********************************************
+ * Define your LDAP servers in this section  *
+ *********************************************/
+
+$servers = new Datastore();
+
+/* $servers->NewServer('ldap_pla') must be called before each new LDAP server
+   declaration. */
+$servers->newServer('ldap_pla');
+
+{
+use NethServer::SSSD;
+use esmith::ConfigDB;
+
+my $db = esmith::ConfigDB->open_ro;
+my $sssd = new NethServer::SSSD();
+
+my $kamikaze = $db->get_prop('phpldapadmin','writable') || 'disabled'
+
+my $bindUser = $sssd->bindUser();
+my $bindPassword = $sssd->bindPassword();
+my $baseDN = $sssd->baseDN();
+my $bindDN = $sssd->bindDN();
+
+my $ldapURI = $sssd->$ldapURI();
+my $port = $sssd->port();
+my $host = $sssd->host();
+
+if ($sssd->isAD())
+    {
+    $OUT .= <<"EOF";
+\$servers->setValue('server','name','Samba4 Server');
+\$servers->setValue('server','host',"$ldapURI");
+\$servers->setValue('login','auth_type','cookie');
+\$servers->setValue('login','bind_id',"$bindDN");
+\$servers->setValue('login','bind_pass',"$bindPassword");
+\$servers->setValue('server','tls',false);
+\$servers->setValue('login','attr','sAMAccountName');
+\$servers->setValue('server','base',array("$baseDN"));
+EOF
+    }
+
+elsif ($sssd->isLdap())
+    {
+    $OUT .= <<"EOF";
+\$servers->setValue('server','name','Openldap Server');
+\$servers->setValue('server','host',"$host");
+\$servers->setValue('server','port',$port);
+\$servers->setValue('login','auth_type','cookie');
+\$servers->setValue('login','bind_id',"$bindDN");
+\$servers->setValue('login','bind_pass',"$bindPassword");
+\$servers->setValue('server','tls',true);
+\$servers->setValue('login','attr','uid');
+\$servers->setValue('server','base',array("$baseDN"));
+EOF
+
+    $OUT .= "\$servers->setValue('server','read_only',true);"
+        unless $kamikaze eq 'enabled';
+    }
+}
+
+/* A convenient name that will appear in the tree viewer and throughout
+   phpLDAPadmin to identify this LDAP server to users. */
+
+/* Examples:
+   'ldap.example.com',
+   'ldaps://ldap.example.com/',
+   'ldapi://%2fusr%local%2fvar%2frun%2fldapi'
+           (Unix socket at /usr/local/var/run/ldap) */
+// $servers->setValue('server','host','127.0.0.1');
+
+/* The port your LDAP server listens on (no quotes). 389 is standard. */
+// $servers->setValue('server','port',389);
+
+/* Array of base DNs of your LDAP server. Leave this blank to have phpLDAPadmin
+   auto-detect it for you. */
+// $servers->setValue('server','base',array(''));
+
+/* Five options for auth_type:
+   1. 'cookie': you will login via a web form, and a client-side cookie will
+      store your login dn and password.
+   2. 'session': same as cookie but your login dn and password are stored on the
+      web server in a persistent session variable.
+   3. 'http': same as session but your login dn and password are retrieved via
+      HTTP authentication.
+   4. 'config': specify your login dn and password here in this config file. No
+      login will be required to use phpLDAPadmin for this server.
+   5. 'sasl': login will be taken from the webserver's kerberos authentication.
+      Currently only GSSAPI has been tested (using mod_auth_kerb).
+
+   Choose wisely to protect your authentication information appropriately for
+   your situation. If you choose 'cookie', your cookie contents will be
+   encrypted using blowfish and the secret your specify above as
+   session['blowfish']. */
+// $servers->setValue('login','auth_type','session');
+
+/* The DN of the user for phpLDAPadmin to bind with. For anonymous binds or
+   'cookie','session' or 'sasl' auth_types, LEAVE THE LOGIN_DN AND LOGIN_PASS
+   BLANK. If you specify a login_attr in conjunction with a cookie or session
+   auth_type, then you can also specify the bind_id/bind_pass here for searching
+   the directory for users (ie, if your LDAP server does not allow anonymous
+   binds. */
+// $servers->setValue('login','bind_id','');
+#  $servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com');
+
+/* Your LDAP password. If you specified an empty bind_id above, this MUST also
+   be blank. */
+// $servers->setValue('login','bind_pass','');
+#  $servers->setValue('login','bind_pass','secret');
+
+/* Use TLS (Transport Layer Security) to connect to the LDAP server. */
+// $servers->setValue('server','tls',false);

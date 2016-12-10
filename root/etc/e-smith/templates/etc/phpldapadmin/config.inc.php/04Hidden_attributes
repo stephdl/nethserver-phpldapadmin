@@ -1,0 +1,15 @@
+/*********************************************
+ * Hidden attributes                         *
+ *********************************************/
+
+/* You may want to hide certain attributes from being edited. If you want to
+   hide attributes from the user, you should use your LDAP servers ACLs.
+   NOTE: The user must be able to read the hide_attrs_exempt entry to be
+   excluded. */
+// $config->custom->appearance['hide_attrs'] = array();
+#  $config->custom->appearance['hide_attrs'] = array('objectClass');
+
+/* Members of this list will be exempt from the hidden attributes. */
+// $config->custom->appearance['hide_attrs_exempt'] = null;
+#  $config->custom->appearance['hide_attrs_exempt'] = 'cn=PLA UnHide,ou=Groups,c=AU';
+

@@ -1,0 +1,43 @@
+*/
+
+/*********************************************
+ * Appearance                                *
+ *********************************************/
+
+/* If you want to choose the appearance of the tree, specify a class name which
+   inherits from the Tree class. */
+// $config->custom->appearance['tree'] = 'AJAXTree';
+#  $config->custom->appearance['tree'] = 'HTMLTree';
+
+/* Just show your custom templates. */
+// $config->custom->appearance['custom_templates_only'] = false;
+
+/* Disable the default template. */
+// $config->custom->appearance['disable_default_template'] = false;
+
+/* Hide the warnings for invalid objectClasses/attributes in templates. */
+// $config->custom->appearance['hide_template_warning'] = false;
+
+/* Set to true if you would like to hide header and footer parts. */
+// $config->custom->appearance['minimalMode'] = false;
+
+/* Configure what objects are shown in left hand tree */
+// $config->custom->appearance['tree_filter'] = '(objectclass=*)';
+
+/* The height and width of the tree. If these values are not set, then
+   no tree scroll bars are provided. */
+// $config->custom->appearance['tree_height'] = null;
+#  $config->custom->appearance['tree_height'] = 600;
+// $config->custom->appearance['tree_width'] = null;
+#  $config->custom->appearance['tree_width'] = 250;
+
+/* Confirm create and update operations, allowing you to review the changes
+   and optionally skip attributes during the create/update operation. */
+// $config->custom->confirm['create'] = true;
+// $config->custom->confirm['update'] = true;
+
+/* Confirm copy operations, and treat them like create operations. This allows
+   you to edit the attributes (thus changing any that might conflict with
+   uniqueness) before creating the new entry. */
+// $config->custom->confirm['copy'] = true;
+
