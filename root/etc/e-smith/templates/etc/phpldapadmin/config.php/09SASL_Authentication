@@ -54,7 +54,7 @@ $servers->setValue('appearance','password_hash','');
    your LDAP server requires you to login to perform searches, you can enter the
    DN to use when searching in 'bind_id' and 'bind_pass' above. */
 // $servers->setValue('login','attr','dn');
-$servers->setValue('login','attr','uid');
+//$servers->setValue('login','attr','uid');
 
 /* Base DNs to used for logins. If this value is not set, then the LDAP server
    Base DNs are used. */
@@ -166,4 +166,3 @@ $servers->setValue('login','attr','uid');
    gidNumber and sambaSID. */
 // $servers->setValue('server','force_may',array(''));
 #  $servers->setValue('server','force_may',array('uidNumber','gidNumber','sambaSID'));
-

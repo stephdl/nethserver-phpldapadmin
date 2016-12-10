@@ -1,18 +1,18 @@
 {
   my $status = $phpldapadmin{'status'} || 'disabled';
- 
-return "# phpldapadmin configuration is disabled by its status property"  unless ($status eq 'enabled'); 
+
+return "# phpldapadmin configuration is disabled by its status property"  unless ($status eq 'enabled');
 
     $OUT .="#-------------------------------------------------\n";
     $OUT .="# phpldapadmin settings from nethserver-phpmyadmin\n";
     $OUT .="#-------------------------------------------------\n";
     $OUT .="\n";
- 
+
     $OUT .= "Alias /phpldapadmin /usr/share/phpldapadmin/htdocs\n";
     $OUT .= "Alias /ldapadmin /usr/share/phpldapadmin/htdocs\n";
 
-    my $access24 = ($phpmyadmin{access} eq "public" ) ? "all granted" : "ip $localAccess" ; 
-    my $access22 = ($phpmyadmin{access} eq "public" ) ? "all" : "$localAccess" ;
+    my $access24 = ($phpldapadmin{access} eq "public" ) ? "all granted" : "ip $localAccess" ;
+    my $access22 = ($phpldapadmin{access} eq "public" ) ? "all" : "$localAccess" ;
 
     $OUT .= qq(
 <Directory /usr/share/phpldapadmin/htdocs>
@@ -27,4 +27,4 @@ return "# phpldapadmin configuration is disabled by its status property"  unless
     Allow from $access22
   </IfModule>
 </Directory>);
-} 
+}
