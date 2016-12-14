@@ -19,3 +19,12 @@ for my $event (qw(
     templates2events("/etc/httpd/conf.d/default-virtualhost.inc", $event);
     event_services($event, qw(httpd reload));
 }
+
+for my $event (qw(
+    nethserver-directory-update
+    nethserver-dc-update
+    ))
+{
+    templates2events("/etc/phpldapadmin/config.php", $event);
+}
+
