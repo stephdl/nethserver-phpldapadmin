@@ -48,7 +48,7 @@
    to a big random string. */
 {
   use NethServer::Password;
-  my $pw = NethServer::Password->new('ldapadmin',{'length' => 128})->save()->getAscii();
+  my $pw = NethServer::Password->new('phpldapadmin',{'length' => 128})->save()->getAscii();
   $OUT.= "   \$config->custom->session['blowfish'] = \'$pw\';\n";
 }
 
