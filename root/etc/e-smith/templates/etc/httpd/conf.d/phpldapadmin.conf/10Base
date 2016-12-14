@@ -3,9 +3,9 @@
 
 return "# phpldapadmin configuration is disabled by its status property"  unless ($status eq 'enabled');
 
-    $OUT .="#-------------------------------------------------\n";
-    $OUT .="# phpldapadmin settings from nethserver-phpmyadmin\n";
-    $OUT .="#-------------------------------------------------\n";
+    $OUT .="#----------------------\n";
+    $OUT .="# phpldapadmin settings\n";
+    $OUT .="#----------------------\n";
     $OUT .="\n";
 
     $OUT .= "Alias /phpldapadmin /usr/share/phpldapadmin/htdocs\n";
