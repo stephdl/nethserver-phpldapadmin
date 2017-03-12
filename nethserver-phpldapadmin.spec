@@ -1,6 +1,6 @@
 %define name nethserver-phpldapadmin
 %define version 0.0.2
-%define release 1
+%define release 2
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
 Version: %{version}
@@ -34,13 +34,16 @@ perl createlinks
 
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
-
+%doc COPYING
 %dir %{_nseventsdir}/%{name}-update
 
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sun Mar 12 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> - 0.0.2-2.ns7
+- GPL license
+
 * Mon Feb 06 2017 stephane de labrusse <stephdl@de-labrusse.fr> - 0.0.2-1.ns7
 - Corrected the php variable interpretation in config.php
 
