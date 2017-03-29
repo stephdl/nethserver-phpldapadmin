@@ -1,6 +1,6 @@
 %define name nethserver-phpldapadmin
-%define version 0.0.2
-%define release 2
+%define version 0.0.3
+%define release 1
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
 Version: %{version}
@@ -41,6 +41,9 @@ perl createlinks
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Wed Mar 29 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> - 0.0.3-1.ns7
+- Template expansion on trusted-network
+
 * Sun Mar 12 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> - 0.0.2-2.ns7
 - GPL license
 

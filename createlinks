@@ -28,3 +28,6 @@ for my $event (qw(
     templates2events("/etc/phpldapadmin/config.php", $event);
 }
 
+my $event = 'trusted-networks-modify';
+    templates2events("/etc/httpd/conf.d/phpldapadmin.conf", $event);
+
