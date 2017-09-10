@@ -29,5 +29,5 @@ for my $event (qw(
 }
 
 my $event = 'trusted-networks-modify';
-    templates2events("/etc/httpd/conf.d/phpldapadmin.conf", $event);
-
+templates2events("/etc/httpd/conf.d/phpldapadmin.conf", $event);
+event_services($event, 'httpd' => 'reload');
