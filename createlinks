@@ -23,7 +23,8 @@ for my $event (qw(
 for my $event (qw(
     nethserver-directory-update
     nethserver-dc-update
-    ))
+    nethserver-sssd-save
+))
 {
     templates2events("/etc/phpldapadmin/config.php", $event);
 }

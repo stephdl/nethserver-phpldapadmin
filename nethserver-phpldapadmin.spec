@@ -1,5 +1,5 @@
 %define name nethserver-phpldapadmin
-%define version 0.0.4
+%define version 0.0.5
 %define release 1
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
@@ -41,6 +41,9 @@ perl createlinks
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Tue May 8 2018 Stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.5-1.ns7
+- Subscribe to the nethserver-sssd-save event
+
 * Sun Sep 10 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.4-1.ns7
 - Restart httpd service on trusted-network
 
