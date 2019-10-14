@@ -1,0 +1,26 @@
+{
+  "id": "nethserver-phpldapadmin",
+  "name": "phpLDAPadmin",
+  "summary": "Provides the administration of LDAP over the Web",
+  "description": "Provide the administration of LDAP over the Web",
+  "url": "",
+  "homepage": "https://github.com/stephdl/nethserver-phpldapadmin",
+  "provides": ["nethserver-phpldapadmin"],
+  "release": {
+    "version": "_RELEASE_"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/stephdl/dev/issues"
+  },
+  "author": {
+    "name": "Stephane de Labrusse",
+    "url": "https://github.com/stephdl/nethserver-phpldapadmin",
+    "email": "stephdl@de-labrusse.fr"
+  },
+  "infoapi": {
+    "path": "nethserver-phpldapadmin/read"
+  },
+  "icon": "logo.png",
+  "external": true
+} 

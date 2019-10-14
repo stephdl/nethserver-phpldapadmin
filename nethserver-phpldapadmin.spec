@@ -1,5 +1,5 @@
 %define name nethserver-phpldapadmin
-%define version 0.0.5
+%define version 0.0.6
 %define release 1
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
@@ -25,10 +25,20 @@ Access via: https://yourdomain/phpmyadmin.
 
 %build
 perl createlinks
+sed -i 's/_RELEASE_/%{version}/' %{name}.json
 
 %install
 /bin/rm -rf $RPM_BUILD_ROOT
 (cd root   ; /usr/bin/find . -depth -print | /bin/cpio -dump $RPM_BUILD_ROOT)
+
+mkdir -p %{buildroot}/usr/share/cockpit/%{name}/
+mkdir -p %{buildroot}/usr/share/cockpit/nethserver/applications/
+mkdir -p %{buildroot}/usr/libexec/nethserver/api/%{name}/
+cp -a manifest.json %{buildroot}/usr/share/cockpit/%{name}/
+cp -a logo.png %{buildroot}/usr/share/cockpit/%{name}/
+cp -a %{name}.json %{buildroot}/usr/share/cockpit/nethserver/applications/
+cp -a api/* %{buildroot}/usr/libexec/nethserver/api/%{name}/
+
 %{genfilelist} %{buildroot}   \
    $RPM_BUILD_ROOT > %{name}-%{version}-filelist
 
@@ -41,6 +51,9 @@ perl createlinks
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Mon Oct 14 2019 Stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.6-1.ns7
+- cockpit. added to legacy apps
+
 * Tue May 8 2018 Stephane de Labrusse <stephdl@de-labrusse.fr> 0.0.5-1.ns7
 - Subscribe to the nethserver-sssd-save event
 
