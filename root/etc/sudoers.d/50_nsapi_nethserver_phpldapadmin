@@ -1,0 +1,8 @@
+
+#
+# nsapi_nethserver_phpldapadmin
+#
+Cmnd_Alias NSAPI_NETHSERVER_PHPLDAPADMIN = \
+     /usr/libexec/nethserver/api/nethserver-phpldapadmin/read
+
+Defaults!NSAPI_NETHSERVER_PHPLDAPADMIN !requiretty
