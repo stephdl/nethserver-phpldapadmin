@@ -1,6 +1,6 @@
 %define name nethserver-phpldapadmin
 %define version 1.0.2
-%define release 1
+%define release 2
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
 Version: %{version}
@@ -52,8 +52,10 @@ cp -a api/* %{buildroot}/usr/libexec/nethserver/api/%{name}/
 rm -rf $RPM_BUILD_ROOT
 
 %postun
-/usr/bin/rm -f /etc/httpd/conf.d/phpldapadmin.conf
-/usr/bin/systemctl reload httpd
+if [ $1 == 0 ] ; then
+   /usr/bin/rm -f /etc/httpd/conf.d/phpldapadmin.conf
+   /usr/bin/systemctl reload httpd
+fi
 
 %changelog
 * Sun Jul 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.2-1
