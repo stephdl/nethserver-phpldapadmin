@@ -24,7 +24,7 @@ $servers->setValue('sasl','authz_id_regex','/^uid=([^,]+)(.+)/i');
 $servers->setValue('sasl','authz_id_replacement','$1');
 $servers->setValue('sasl','props',null);
 
-$servers->setValue('appearance','password_hash','md5');
+$servers->setValue('appearance','pla_password_hash','md5');
 $servers->setValue('login','attr','dn');
 $servers->setValue('login','fallback_dn',false);
 $servers->setValue('login','class',null);

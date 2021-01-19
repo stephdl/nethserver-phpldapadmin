@@ -1,6 +1,6 @@
 %define name nethserver-phpldapadmin
-%define version 1.0.2
-%define release 2
+%define version 1.0.3
+%define release 1
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
 Version: %{version}
@@ -58,6 +58,9 @@ if [ $1 == 0 ] ; then
 fi
 
 %changelog
+* Tue Jan 19 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.3-1
+- Fix the pla_password_hash upgrade
+
 * Sun Jul 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.2-1
 - Remove http templates after rpm removal
 
