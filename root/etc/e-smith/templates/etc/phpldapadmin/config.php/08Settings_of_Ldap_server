@@ -33,6 +33,7 @@ if ($sssd->isAD())
     $OUT .= <<"EOF";
 \$servers->setValue('server','name','Samba4AD Server');
 \$servers->setValue('server','host','$ldapURI');
+\$servers->setValue('server','port',$port);
 \$servers->setValue('login','auth_type','cookie');
 \$servers->setValue('login','bind_id','$bindDN');
 \$servers->setValue('login','bind_pass','$bindPassword');
