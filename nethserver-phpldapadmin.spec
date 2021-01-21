@@ -1,5 +1,5 @@
 %define name nethserver-phpldapadmin
-%define version 1.0.3
+%define version 1.0.4
 %define release 1
 Summary: Nethserver integration of phpldapadmin
 Name: %{name}
@@ -58,6 +58,10 @@ if [ $1 == 0 ] ; then
 fi
 
 %changelog
+* Thu Jan 21 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.4-1
+- Fix when to use startTls
+- Add samba AD port
+
 * Tue Jan 19 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.3-1
 - Fix the pla_password_hash upgrade
 

@@ -33,6 +33,7 @@ if ($sssd->isAD())
     $OUT .= <<"EOF";
 \$servers->setValue('server','name','Samba4AD Server');
 \$servers->setValue('server','host','$ldapURI');
+\$servers->setValue('server','port',$port);
 \$servers->setValue('login','auth_type','cookie');
 \$servers->setValue('login','bind_id','$bindDN');
 \$servers->setValue('login','bind_pass','$bindPassword');
@@ -50,11 +51,15 @@ elsif ($sssd->isLdap())
 \$servers->setValue('login','auth_type','cookie');
 \$servers->setValue('login','bind_id','$bindDN');
 \$servers->setValue('login','bind_pass','$bindPassword');
-\$servers->setValue('server','tls',true);
 \$servers->setValue('login','attr','uid');
 \$servers->setValue('server','base',array('$baseDN'));
 EOF
     }
+   if ($sssd->startTls()) {
+      $OUT .= "\$servers->setValue('server','tls',true);\n"
+   } else {
+      $OUT .= "\$servers->setValue('server','tls',false);\n"
+   }
     $OUT .= "\$servers->setValue('server','read_only',true);"
         unless $kamikaze eq 'enabled';
 }
